@@ -151,6 +151,11 @@ def get_parser():
         default=None,
         help="The prompt to generate the image or video from.")
     parser.add_argument(
+        "--negative_prompt",
+        type=str,
+        default="",
+        help="Negative prompt for content exclusion.")
+    parser.add_argument(
         "--use_prompt_extend",
         default='plain',
         choices=['plain', 'wan_zh', 'wan_en', 'wan_zh_ds', 'wan_en_ds'],
@@ -299,6 +304,7 @@ def main(args):
         sample_solver=args.sample_solver,
         sampling_steps=args.sample_steps,
         guide_scale=args.sample_guide_scale,
+        n_prompt=args.negative_prompt,
         seed=args.base_seed,
         offload_model=args.offload_model)
 
